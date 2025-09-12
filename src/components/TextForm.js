@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
+  const [text, setText] = useState("");
+
   // Convert to Uppercase
   const handleUpClick = () => {
     let newText = text.toUpperCase();
@@ -43,9 +45,7 @@ export default function TextForm(props) {
 
   // Copy Text
   const handleCopyText = () => {
-    let textarea = document.getElementById("myBox"); // textarea ka id
-    textarea.select(); // pura text select hoga
-    navigator.clipboard.writeText(textarea.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard!", "success");
   };
 
@@ -57,10 +57,39 @@ export default function TextForm(props) {
   };
 
   const handleOnChange = (event) => {
-    // console.log("On change");
     setText(event.target.value);
   };
-  const [text, setText] = useState("");
+
+  // ✅ Title Case
+  const handleTitleCase = () => {
+    let smallWords = ["a", "an", "the", "and", "or", "of", "in", "on"];
+    let newText = text
+      .toLowerCase()
+      .split(" ")
+      .map((word, index) =>
+        index === 0 || !smallWords.includes(word)
+          ? word.charAt(0).toUpperCase() + word.slice(1)
+          : word
+      )
+      .join(" ");
+    setText(newText);
+    props.showAlert("Converted to Title Case!", "success");
+  };
+
+  // ✅ Extract Numbers
+  const handleExtractNumbers = () => {
+    let numbers = text.match(/\d+/g);
+    let newText = numbers ? numbers.join(" ") : "No numbers found!";
+    setText(newText);
+    props.showAlert("Numbers Extracted!", "success");
+  };
+
+  // ✅ Text to Speech
+  const handleSpeak = () => {
+    let msg = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(msg);
+    props.showAlert("Speaking Text...", "success");
+  };
 
   return (
     <>
@@ -70,8 +99,8 @@ export default function TextForm(props) {
           <textarea
             className="form-control"
             style={{
-              backgroundColor: props.theme.nav, // uses navbar color
-              color: props.theme.text, // uses text color from theme
+              backgroundColor: props.theme.nav,
+              color: props.theme.text,
             }}
             value={text}
             onChange={handleOnChange}
@@ -79,57 +108,60 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
+
+        {/* Default Buttons */}
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>
-          Convert to Uppercase
+          Uppercase
         </button>
         <button className="btn btn-primary mx-1" onClick={handleLoClick}>
-          Convert to Lowercase
+          Lowercase
         </button>
-        <button
-          className="btn btn-primary mx-1"
-          onClick={handleCapitalizeClick}
-        >
-          Convert to Capitalize
+        <button className="btn btn-primary mx-1" onClick={handleCapitalizeClick}>
+          Capitalize
         </button>
         <button className="btn btn-primary mx-1" onClick={handleSentenceClick}>
-          Convert to Sentence
+          Sentence Case
         </button>
-        <button
-          className="btn btn-primary mx-1"
-          onClick={handleRemoveExtraSpaces}
-        >
+        <button className="btn btn-primary mx-1" onClick={handleRemoveExtraSpaces}>
           Remove Extra Spaces
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopyText}>
-          Copy Text
+         {/* ✅ Extra Feature Buttons */}
+        <button className="btn btn-primary mx-1" onClick={handleTitleCase}>
+          Title Case
         </button>
-        <button
-          className="btn btn-primary mx-1 my-2"
-          onClick={handleClearClick}
-        >
-          Clear Text
+        <button className="btn btn-primary mx-1" onClick={handleExtractNumbers}>
+          Extract Numbers
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleSpeak}>
+          Speak Text
         </button>
       </div>
-      <div className="container my-3">
-        <h2>Your text summary</h2>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleCopyText}>
+          Copy
+        </button>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleClearClick}>
+          Clear
+        </button>
 
+       
+
+      <div className="container my-3">
+        <h2>Your Text Summary</h2>
         <p>
           {text.split(/\s+/).filter((element) => element.length !== 0).length}{" "}
-          words and {text.length} characters
+          Words and {text.length} Characters
         </p>
-
         <p>
           {0.008 *
-            text.split(/\s+/).filter((element) => element.length !== 0)
-              .length}{" "}
-          Minutes read
+            text.split(/\s+/).filter((element) => element.length !== 0).length}{" "}
+          Minutes Read
         </p>
 
         <h2>Preview</h2>
         <p>
           {text.length > 0
             ? text
-            : "Enter something in the textbox above to preview it."}
+            : "Enter Something in the Textbox Above To Preview It."}
         </p>
       </div>
     </>

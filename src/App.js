@@ -1,13 +1,18 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-// import About from "./components/About";
+import About from "./components/About";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
 import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [alert, setAlert] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false); // ✅ new state
+  const [isDarkMode, setIsDarkMode] = useState(false); // new state
 
   const [theme, setTheme] = useState({
     base: "white",
@@ -48,7 +53,7 @@ function App() {
   };
 
   const changeTheme = (newTheme) => {
-    setIsDarkMode(false); // ✅ palette click → dark mode OFF
+    setIsDarkMode(false); //  palette click → dark mode OFF
     setTheme(newTheme);
     document.body.style.backgroundColor = newTheme.base;
     document.body.style.color = newTheme.text;
@@ -58,29 +63,40 @@ function App() {
   document.body.style.backgroundColor = theme.base;
   document.body.style.color = theme.text;
 
-  return (
-    <>
+return (
+  <>
+    <Router>
       <Navbar
         title="TextUtils"
         aboutText="About"
         theme={theme}
         changeTheme={changeTheme}
         toggleMode={toggleMode}
-        isDarkMode={isDarkMode}   // ✅ pass new state
+        isDarkMode={isDarkMode}
       />
 
       <Alert alert={alert} />
       <div className="container my-3">
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter the text to analyze below"
-          mode={isDarkMode ? "dark" : "light"}
-          
-  theme={theme}
-        />
-        {/* <About/> */}
+        <Routes>
+          <Route path="/about" element={<About theme={theme} />} />
+
+
+          <Route
+            path="/"
+            element={
+              <TextForm
+                showAlert={showAlert}
+                heading="Enter the Text To Analyze Below"
+                mode={isDarkMode ? "dark" : "light"}
+                theme={theme}
+              />
+            }
+          />
+        </Routes>
       </div>
-    </>
+    </Router>
+  </>
+
   );
 }
 

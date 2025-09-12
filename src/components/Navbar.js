@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -11,13 +12,13 @@ export default function Navbar(props) {
       }}
     >
       <div className="container-fluid">
-        <a
+        <Link
           className="navbar-brand"
-          href="/"
+          to="/"
           style={{ color: props.theme.text }}
         >
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,98 +34,96 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
+              <Link
                 className="nav-link active"
                 aria-current="page"
-                href="/"
+                to="/"
                 style={{ color: props.theme.text }}
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a
+              <Link
                 className="nav-link"
-                href="/"
+                to="/about"
                 style={{ color: props.theme.text }}
               >
                 {props.aboutText}
-              </a>
+              </Link>
             </li>
           </ul>
 
-          {/* 🎨 Color Theme Palettes (hide if dark mode ON) */}
-          {!props.isDarkMode && (
-            <div className="d-flex">
-              <div
-                className="rounded mx-2"
-                onClick={() =>
-                  props.changeTheme({
-                    base: "#90caf9",
-                    nav: "#64b5f6",
-                    text: "black",
-                  })
-                }
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  cursor: "pointer",
-                  backgroundColor: "#2896f0ff",
-                }}
-              ></div>
+          {/* 🎨 Color Theme Palettes */}
+          <div className="d-flex">
+            <div
+              className="rounded mx-2"
+              onClick={() =>
+                props.changeTheme({
+                  base: "#90caf9",
+                  nav: "#64b5f6",
+                  text: "black",
+                })
+              }
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                backgroundColor: "#2896f0ff",
+              }}
+            ></div>
 
-              <div
-                className="rounded mx-2"
-                onClick={() =>
-                  props.changeTheme({
-                    base: "#a5d6a7",
-                    nav: "#81c784",
-                    text: "black",
-                  })
-                }
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  cursor: "pointer",
-                  backgroundColor: "#0a9f11ff",
-                }}
-              ></div>
+            <div
+              className="rounded mx-2"
+              onClick={() =>
+                props.changeTheme({
+                  base: "#a5d6a7",
+                  nav: "#81c784",
+                  text: "black",
+                })
+              }
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                backgroundColor: "#0a9f11ff",
+              }}
+            ></div>
 
-              <div
-                className="rounded mx-2"
-                onClick={() =>
-                  props.changeTheme({
-                    base: "#ef9a9a",
-                    nav: "#e57373",
-                    text: "black",
-                  })
-                }
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  cursor: "pointer",
-                  backgroundColor: "#e62323ff",
-                }}
-              ></div>
+            <div
+              className="rounded mx-2"
+              onClick={() =>
+                props.changeTheme({
+                  base: "#ef9a9a",
+                  nav: "#e57373",
+                  text: "black",
+                })
+              }
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                backgroundColor: "#e62323ff",
+              }}
+            ></div>
 
-              <div
-                className="rounded mx-2"
-                onClick={() =>
-                  props.changeTheme({
-                    base: "#b39ddb",
-                    nav: "#9575cd",
-                    text: "black",
-                  })
-                }
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  cursor: "pointer",
-                  backgroundColor: "#8541d8ff",
-                }}
-              ></div>
-
-              <div
+            <div
+              className="rounded mx-2"
+              onClick={() =>
+                props.changeTheme({
+                  base: "#b39ddb",
+                  nav: "#9575cd",
+                  text: "black",
+                })
+              }
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                backgroundColor: "#8541d8ff",
+              }}
+            ></div>
+               <div
                 className="rounded mx-2"
                 onClick={() =>
                   props.changeTheme({
@@ -159,27 +158,25 @@ export default function Navbar(props) {
                   border: "0.5px solid white",
                 }}
               ></div>
-            </div>
-          )}
 
-          {/* 🌙 Dark Mode Toggle */}
-          <div
-            className={`form-check form-switch text-${
-              props.isDarkMode ? "light" : "dark"
-            } mx-3`}
-          >
-            <input
-              className="form-check-input"
-              onClick={props.toggleMode}
-              type="checkbox"
-              role="switch"
-              id="switchCheckDefault"
-              checked={props.isDarkMode}
-              readOnly
-            />
-            <label className="form-check-label" htmlFor="switchCheckDefault">
-              Enable Dark Mode
-            </label>
+            {/* ⚪ White Palette (new added) */}
+            <div
+              className="rounded mx-2"
+              onClick={() =>
+                props.changeTheme({
+                  base: "#ffffff",
+                  nav: "#f1f3f5",
+                  text: "black",
+                })
+              }
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                backgroundColor: "#ffffff",
+                border: "0.5px solid black",
+              }}
+            ></div>
           </div>
         </div>
       </div>
@@ -192,7 +189,7 @@ Navbar.propTypes = {
   aboutText: PropTypes.string.isRequired,
   changeTheme: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
-  isDarkMode: PropTypes.bool.isRequired,
+  isDarkMode: PropTypes.bool, // ab zaroori nahi, optional kar diya
 };
 
 Navbar.defaultProps = {
