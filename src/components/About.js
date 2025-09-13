@@ -8,17 +8,26 @@ export default function About({ theme }) {
 
   const accordionStyle = {
     color: theme.text,
-    backgroundColor: theme.nav, // thoda contrast ke liye nav color use
+    backgroundColor: theme.nav, // for header and button use nav
   };
+
+  const bodyStyle = {
+    color: theme.text,
+    backgroundColor: theme.mid, // for collapse-body use mid
+  };
+
+  // if theme is black (nav = #212529) then arrow becomes white
+  const arrowClass = theme.nav === "#212529" ? "accordion-dark" : "";
 
   return (
     <div className="container" style={myStyle}>
       <h1 className="my-3">About Us</h1>
       <div className="accordion" id="accordionExample">
+        {/* Item 1 */}
         <div className="accordion-item" style={accordionStyle}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed"
+              className={`accordion-button collapsed ${arrowClass}`}
               type="button"
               style={accordionStyle}
               data-bs-toggle="collapse"
@@ -34,7 +43,7 @@ export default function About({ theme }) {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={accordionStyle}>
+            <div className="accordion-body" style={bodyStyle}>
               <strong>TextUtils</strong> is a lightweight and efficient text
               utility application designed to make your everyday text editing
               tasks faster and easier. Whether you want to convert your text to
@@ -45,10 +54,11 @@ export default function About({ theme }) {
           </div>
         </div>
 
+        {/* Item 2 */}
         <div className="accordion-item" style={accordionStyle}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed"
+              className={`accordion-button collapsed ${arrowClass}`}
               style={accordionStyle}
               type="button"
               data-bs-toggle="collapse"
@@ -64,7 +74,7 @@ export default function About({ theme }) {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={accordionStyle}>
+            <div className="accordion-body" style={bodyStyle}>
               <strong>TextUtils</strong> is a <em>completely free</em> tool. No
               login or payment required — just open it in your browser and start
               editing text instantly on mobile or desktop.
@@ -72,10 +82,11 @@ export default function About({ theme }) {
           </div>
         </div>
 
+        {/* Item 3 */}
         <div className="accordion-item" style={accordionStyle}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed"
+              className={`accordion-button collapsed ${arrowClass}`}
               style={accordionStyle}
               type="button"
               data-bs-toggle="collapse"
@@ -91,7 +102,7 @@ export default function About({ theme }) {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={accordionStyle}>
+            <div className="accordion-body" style={bodyStyle}>
               <strong>TextUtils</strong> works seamlessly across all{" "}
               <em>modern browsers</em> like Chrome, Firefox, Safari, Edge, and
               even Internet Explorer.

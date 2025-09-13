@@ -1,0 +1,143 @@
+/* Accordion arrow white for dark theme */
+.accordion-dark::after {
+  filter: invert(1);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base container */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 12px; /* less padding */
+  flex: 1;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 15px; /* less padding */
+  height: 48px; /* fixed height */
+}
+
+.navbar-brand {
+  font-size: 1.2rem; /* smaller font */
+  font-weight: 600;
+}
+
+/* TextForm */
+.textarea {
+  width: 100%;
+  min-height: 120px; /* slightly smaller */
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px; /* less space below */
+}
+
+.button-group button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.button-group button:hover {
+  opacity: 0.9;
+}
+
+/* Accordion (About) */
+.accordion {
+  margin-top: 15px;
+}
+
+.accordion-button {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 10px; /* small padding */
+  text-align: center;
+  font-size: 13px; /* small font */
+}
+
+footer a {
+  margin: 0 6px;
+  color: inherit;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #007bff;
+}
+
+/*  Responsive rules */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    height: auto; /* auto on small screen */
+    padding: 8px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .textarea {
+    min-height: 100px;
+    font-size: 14px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+
+  .accordion-button {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+
+  footer a {
+    font-size: 16px;
+  }
+}
+
+/* App.css */
+
+/* Give the whole page a flex layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

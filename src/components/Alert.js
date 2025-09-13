@@ -1,4 +1,5 @@
 import React from "react";
+import "./Alert.css"; // custom CSS
 
 function capitalize(str) {
   if (!str) return "";
@@ -8,11 +9,8 @@ function capitalize(str) {
 function Alert(props) {
   return (
     props.alert && (
-      <div
-        className={`alert alert-${props.alert.type} alert-dismissible fade show`}
-        role="alert"
-      >
-        <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}
+      <div className={`custom-alert ${props.alert.type}`}>
+        <strong>{capitalize(props.alert.type)}:</strong> {props.alert.msg}
       </div>
     )
   );
