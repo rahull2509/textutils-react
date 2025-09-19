@@ -55,7 +55,24 @@ A simple React-based text utility app that helps you analyze and manipulate your
 ---
 
 ## 📂 Project Structure
-<pre> ```plaintext TextUtils/ ├── public/ │ ├── favicon.ico │ ├── index.html │ └── ... ├── src/ │ ├── components/ │ │ ├── Navbar.js │ │ ├── TextForm.js │ │ └── About.js │ ├── App.js │ ├── index.js │ └── App.css ├── package.json └── README.md ``` </pre>
+
+```plaintext
+TextUtils/
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── Navbar.js
+│   │   ├── TextForm.js
+│   │   └── About.js
+│   ├── App.js
+│   ├── index.js
+│   └── App.css
+├── package.json
+└── README.md
+
 
 
 ---
