@@ -16,39 +16,34 @@ export default function Footer({ theme }) {
       <p>© 2025 Rahul | All Rights Reserved</p>
 
       <div style={{ marginTop: "8px" }}>
-
-          {/* GitHub */}
+        {/* GitHub */}
         <a
-          href="https://github.com/rahull2509" 
+          href="https://github.com/rahull2509"
           target="_blank"
           rel="noopener noreferrer"
           style={{ margin: "0 10px", color: theme.text, fontSize: "20px" }}
         >
           <FaGithub />
         </a>
-         
-         {/* X (Twitter) */}
+
+        {/* X (Twitter) */}
         <a
-          href="https://twitter.com/your-username" 
+          href="https://twitter.com/rahull2509"
           target="_blank"
           rel="noopener noreferrer"
           style={{ margin: "0 10px", color: theme.text, fontSize: "20px" }}
         >
           <FaXTwitter />
+        </a>
 
         {/* LinkedIn */}
         <a
-          href="https://www.linkedin.com/in/rahullgangwar" 
+          href="https://www.linkedin.com/in/rahullgangwar"
           target="_blank"
           rel="noopener noreferrer"
           style={{ margin: "0 10px", color: theme.text, fontSize: "20px" }}
         >
           <FaLinkedin />
-        </a>
-
-      
-
-       
         </a>
       </div>
     </footer>
