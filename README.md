@@ -57,26 +57,30 @@ A simple React-based text utility app that helps you analyze and manipulate your
 ## 📂 Project Structure
 
 ```plaintext
-TextUtils/
+TEXTUTILS/
 ├── public/
-│   ├── favicon.ico
 │   ├── index.html
 │   └── ...
 ├── src/
 │   ├── components/
+│   │   ├── About.js
+│   │   ├── Alert.css
+│   │   ├── Alert.js
+│   │   ├── Footer.js
 │   │   ├── Navbar.js
-│   │   ├── TextForm.js
-│   │   └── About.js
+│   │   └── TextForm.js
+│   │
+│   ├── App.css
 │   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
 │   ├── index.js
-│   └── App.css
-├── package.json
-└── README.md
-
-
-
----
-
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+│
+├── README.md
+└── [Other config files]
 ## 📜 License
 This project is licensed under the **MIT License** – feel free to use and modify.  
 
